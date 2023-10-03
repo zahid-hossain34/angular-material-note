@@ -8,6 +8,10 @@ import { AppComponent } from './app.component';
 import { MatIconModule } from '@angular/material/icon';
 import { ThemeModule } from './@theme/theme.module';
 import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { noteReducer } from './@application/store/note-state/note.reducer';
+import { metaReducers } from './@application/store/store';
+
 
 
 @NgModule({
@@ -15,11 +19,13 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent
   ],
   imports: [
-  BrowserModule,
+BrowserModule,
   AppRoutingModule,
     ThemeModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    StoreModule.forRoot({ note: noteReducer },{metaReducers})
+
 
   ],
   providers: [],
