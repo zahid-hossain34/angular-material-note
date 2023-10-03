@@ -8,7 +8,7 @@
 
 <mat-menu #menu="matMenu">
 	<button
-    *ngFor="let option of options"
+    *ngFor="let option of options$ | async"
     mat-menu-item
     (click)="changeTheme(option.value)">
     <mat-icon

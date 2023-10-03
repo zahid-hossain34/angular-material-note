@@ -30,7 +30,24 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              {
+                "input": "@angular/material/prebuilt-themes/indigo-pink.css",
+                "inject": false
+              },
+              {
+                "input": "@angular/material/prebuilt-themes/deeppurple-amber.css",
+                "inject": false
+              },
+              {
+                "input": "@angular/material/prebuilt-themes/pink-bluegrey.css",
+                "inject": false
+              },
+              {
+                "input": "@angular/material/prebuilt-themes/purple-green.css",
+                "inject": false
+              }
+
           
             ],
             "scripts": []

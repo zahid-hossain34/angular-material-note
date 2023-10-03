@@ -30,10 +30,6 @@ function getLinkElementForKey(key: string) {
 }
 
 function getExistingLinkElementByKey(key: string) {
-  console.log(document.head.querySelector(
-    `link[rel="stylesheet"].${getClassNameForKey(key)}`
-  ));
-  
   return document.head.querySelector(
     `link[rel="stylesheet"].${getClassNameForKey(key)}`
   );
@@ -42,11 +38,8 @@ function getExistingLinkElementByKey(key: string) {
 function createLinkElementWithKey(key: string) {
   const linkEl = document.createElement("link");
   linkEl.setAttribute("rel", "stylesheet");
-  linkEl.setAttribute("type", "text/html");
   linkEl.classList.add(getClassNameForKey(key));
-  document.head.appendChild(linkEl);
-  console.log(linkEl);
-  
+  document.head.appendChild(linkEl);  
   return linkEl;
 }
 

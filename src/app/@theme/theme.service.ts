@@ -9,14 +9,14 @@ import { ThemeManagerService } from './theme-manager.service';
 })
 export class ThemeService {
 
-
+  private menuExpandedSubject = new BehaviorSubject<boolean>(true);
+  menuExpanded$ = this.menuExpandedSubject.asObservable();
 
 constructor(
   private http: HttpClient,
   private themeStyleManager: ThemeManagerService
 ) { }
-private menuExpandedSubject = new BehaviorSubject<boolean>(true);
-menuExpanded$ = this.menuExpandedSubject.asObservable();
+
 
 toggleMenu() {
   this.menuExpandedSubject.next(!this.menuExpandedSubject.value);
@@ -27,7 +27,7 @@ getThemeOptions(): Observable<Array<Option>> {
 setTheme(themeToSet:string) {
   this.themeStyleManager.setStyle(
     "theme",
-    `node_modules/@angular/material/prebuilt-themes/${themeToSet}.css`
+    `${themeToSet}.css`
   );
 }
 

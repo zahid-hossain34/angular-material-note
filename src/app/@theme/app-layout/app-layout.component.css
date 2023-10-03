@@ -1,5 +1,5 @@
 .example-container {
-    height: 500px;
+    height: 100vh;
     border: 1px solid rgba(0, 0, 0, 0.5);
   }
   .example-sidenav-content {
@@ -43,3 +43,30 @@
     justify-content: center;
     align-items: center;
   }
+  .tolbar{
+    display: flex;
+    position: fixed;
+  }
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .app-container .main-content {
+    /* display: flex;
+    flex-grow: 1; */
+    overflow: hidden;
+    margin-top: 60px;
+  }
+  /* .main-content{
+    --==
+  } */
+  
+  .app-container .main-content .content {
+    /* flex-grow: 1; */
+    overflow-y: auto;
+  }
+  
+  /* Add styles for header, sidenav, content, and footer as needed */
+  

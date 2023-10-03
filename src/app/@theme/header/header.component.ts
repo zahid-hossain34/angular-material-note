@@ -10,22 +10,16 @@ import { Option } from 'src/app/@application/interfaces/theme-option.interface';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  selectedTheme = 'theme-default';
-  options$: Observable<Array<Option>> | any = this.themeService.getThemeOptions();
+  
   constructor(private themeService:ThemeService) { }
 
   ngOnInit() {
-    this.themeService.setTheme("indigo-pink");
-    console.log(this.options$);
-    
+
   }
   onMenuToggle() {
     this.themeService.toggleMenu();
   }
  
-  themeChangeHandler(themeToSet:string) {
-    this.themeService.setTheme(themeToSet);
-  }
   
 
 }

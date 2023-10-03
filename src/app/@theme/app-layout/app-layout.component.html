@@ -1,75 +1,305 @@
-<app-header></app-header>
-<mat-sidenav-container class="example-container" autosize>
-  <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true">
-    <mat-nav-list>
-      <mat-list-item (click)="onItemToggle()" class="parent">
-        <div
-          routerLink="/notes"
-          routerLinkActive="active"
-          class="mat-list-item"
-        >
-          <mat-icon mat-list-icon class="icon">lightbulb</mat-icon>
-          <span
-            class="full-width"
-            style="margin-left: 6px"
-            *ngIf="isExpanded || isShowing"
-            >Notes</span
+<!-- <div>
+  <app-header></app-header>
+  <div class="main-content">
+
+    <mat-sidenav-container class="example-container" autosize>
+      <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true">
+        <mat-nav-list>
+          <mat-list-item (click)="onItemToggle()" class="parent">
+            <div
+              routerLink="/notes"
+              routerLinkActive="active"
+              class="mat-list-item"
+            >
+              <mat-icon mat-list-icon class="icon">lightbulb</mat-icon>
+              <span
+                class="full-width"
+                style="margin-left: 6px"
+                *ngIf="isExpanded || isShowing"
+                >Notes</span
+              >
+              <mat-icon
+                class="menu-button"
+                [ngClass]="{ rotated: showSubmenu }"
+                *ngIf="isExpanded || isShowing"
+                >expand_more</mat-icon
+              >
+            </div>
+          </mat-list-item>
+          <div
+            class="submenu"
+            [ngClass]="{ expanded: showSubmenu }"
+            *ngIf="isExpanded && showSubmenu"
           >
-          <mat-icon
-            class="menu-button"
-            [ngClass]="{ rotated: showSubmenu }"
-            *ngIf="isExpanded || isShowing"
-            >expand_more</mat-icon
-          >
-        </div>
-      </mat-list-item>
-      <div
-        class="submenu"
-        [ngClass]="{ expanded: showSubmenu }"
-        *ngIf="isExpanded && showSubmenu"
-      >
-        <a mat-list-item>Add Note</a>
+            <a mat-list-item>Add Note</a>
+          </div>
+          <mat-list-item class="parent">
+            <div
+              routerLink="/trash"
+              routerLinkActive="active"
+              class="mat-list-item"
+            >
+              <mat-icon mat-list-icon class="icon">delete</mat-icon>
+              <span class="full-width" *ngIf="isExpanded || isShowing"
+                >Trash</span
+              >
+            </div>
+          </mat-list-item>
+          <mat-list-item class="parent">
+            <div
+              routerLink="/profile"
+              routerLinkActive="active"
+              class="mat-list-item"
+            >
+              <mat-icon matl-list-icon class="icon">perm_identity</mat-icon>
+              <span class="full-width" *ngIf="isExpanded || isShowing"
+                >Profile</span
+              >
+            </div>
+          </mat-list-item>
+  
+          <mat-list-item class="parent">
+            <div
+              routerLink="/settings"
+              routerLinkActive="active"
+              class="mat-list-item"
+            >
+              <mat-icon mat-list-icon class="icon">settings</mat-icon>
+              <span class="full-width" *ngIf="isExpanded || isShowing"
+                >Settings</span
+              >
+            </div>
+          </mat-list-item>
+        </mat-nav-list>
+      </mat-sidenav>
+  
+      <div class="example-sidenav-content">
+        <router-outlet></router-outlet>
       </div>
-      <mat-list-item class="parent">
-        <div
-          routerLink="/trash"
-          routerLinkActive="active"
-          class="mat-list-item"
-        >
-          <mat-icon mat-list-icon class="icon">delete</mat-icon>
-          <span class="full-width" *ngIf="isExpanded || isShowing">Trash</span>
-        </div>
-      </mat-list-item>
-      <mat-list-item class="parent">
-        <div
-          routerLink="/profile"
-          routerLinkActive="active"
-          class="mat-list-item"
-        >
-          <mat-icon matl-list-icon class="icon">perm_identity</mat-icon>
-          <span class="full-width" *ngIf="isExpanded || isShowing"
-            >Profile</span
-          >
-        </div>
-      </mat-list-item>
-
-      <mat-list-item class="parent">
-        <div
-          routerLink="/settings"
-          routerLinkActive="active"
-          class="mat-list-item"
-        >
-          <mat-icon mat-list-icon class="icon">settings</mat-icon>
-          <span class="full-width" *ngIf="isExpanded || isShowing"
-            >Settings</span
-          >
-        </div>
-      </mat-list-item>
-    </mat-nav-list>
-  </mat-sidenav>
-
-  <div class="example-sidenav-content">
-    <router-outlet></router-outlet>
+    </mat-sidenav-container>
+    <app-footer></app-footer>
   </div>
-</mat-sidenav-container>
-<app-footer></app-footer>
+</div> -->
+<div class="app-container">
+  <app-header></app-header>
+  <div class="main-content">
+    <mat-sidenav-container class="example-container" autosize>
+      <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true">
+        <mat-nav-list>
+          <mat-list-item (click)="onItemToggle()" class="parent">
+            <div
+              routerLink="/notes"
+              routerLinkActive="active"
+              class="mat-list-item"
+            >
+              <mat-icon mat-list-icon class="icon">lightbulb</mat-icon>
+              <span
+                class="full-width"
+                style="margin-left: 6px"
+                *ngIf="isExpanded || isShowing"
+                >Notes</span
+              >
+              <mat-icon
+                class="menu-button"
+                [ngClass]="{ rotated: showSubmenu }"
+                *ngIf="isExpanded || isShowing"
+                >expand_more</mat-icon
+              >
+            </div>
+          </mat-list-item>
+          <div
+            class="submenu"
+            [ngClass]="{ expanded: showSubmenu }"
+            *ngIf="isExpanded && showSubmenu"
+          >
+            <a mat-list-item>Add Note</a>
+          </div>
+          <mat-list-item class="parent">
+            <div
+              routerLink="/trash"
+              routerLinkActive="active"
+              class="mat-list-item"
+            >
+              <mat-icon mat-list-icon class="icon">delete</mat-icon>
+              <span class="full-width" *ngIf="isExpanded || isShowing">Trash</span>
+            </div>
+          </mat-list-item>
+          <mat-list-item class="parent">
+            <div
+              routerLink="/profile"
+              routerLinkActive="active"
+              class="mat-list-item"
+            >
+              <mat-icon matl-list-icon class="icon">perm_identity</mat-icon>
+              <span class="full-width" *ngIf="isExpanded || isShowing"
+                >Profile</span
+              >
+            </div>
+          </mat-list-item>
+    
+          <mat-list-item class="parent">
+            <div
+              routerLink="/settings"
+              routerLinkActive="active"
+              class="mat-list-item"
+            >
+              <mat-icon mat-list-icon class="icon">settings</mat-icon>
+              <span class="full-width" *ngIf="isExpanded || isShowing"
+                >Settings</span
+              >
+            </div>
+          </mat-list-item>
+          <mat-list-item class="parent">
+            <div
+              routerLink="/settings"
+              routerLinkActive="active"
+              class="mat-list-item"
+            >
+              <mat-icon mat-list-icon class="icon">settings</mat-icon>
+              <span class="full-width" *ngIf="isExpanded || isShowing"
+                >Settings</span
+              >
+            </div>
+          </mat-list-item>
+          <mat-list-item class="parent">
+            <div
+              routerLink="/settings"
+              routerLinkActive="active"
+              class="mat-list-item"
+            >
+              <mat-icon mat-list-icon class="icon">settings</mat-icon>
+              <span class="full-width" *ngIf="isExpanded || isShowing"
+                >Settings</span
+              >
+            </div>
+          </mat-list-item>
+          <mat-list-item class="parent">
+            <div
+              routerLink="/settings"
+              routerLinkActive="active"
+              class="mat-list-item"
+            >
+              <mat-icon mat-list-icon class="icon">settings</mat-icon>
+              <span class="full-width" *ngIf="isExpanded || isShowing"
+                >Settings</span
+              >
+            </div>
+          </mat-list-item>
+          <mat-list-item class="parent">
+            <div
+              routerLink="/settings"
+              routerLinkActive="active"
+              class="mat-list-item"
+            >
+              <mat-icon mat-list-icon class="icon">settings</mat-icon>
+              <span class="full-width" *ngIf="isExpanded || isShowing"
+                >Settings</span
+              >
+            </div>
+          </mat-list-item>
+          <mat-list-item class="parent">
+            <div
+              routerLink="/settings"
+              routerLinkActive="active"
+              class="mat-list-item"
+            >
+              <mat-icon mat-list-icon class="icon">settings</mat-icon>
+              <span class="full-width" *ngIf="isExpanded || isShowing"
+                >Settings</span
+              >
+            </div>
+          </mat-list-item>
+          <mat-list-item class="parent">
+            <div
+              routerLink="/settings"
+              routerLinkActive="active"
+              class="mat-list-item"
+            >
+              <mat-icon mat-list-icon class="icon">settings</mat-icon>
+              <span class="full-width" *ngIf="isExpanded || isShowing"
+                >Settings</span
+              >
+            </div>
+          </mat-list-item>
+          <mat-list-item class="parent">
+            <div
+              routerLink="/settings"
+              routerLinkActive="active"
+              class="mat-list-item"
+            >
+              <mat-icon mat-list-icon class="icon">settings</mat-icon>
+              <span class="full-width" *ngIf="isExpanded || isShowing"
+                >Settings</span
+              >
+            </div>
+          </mat-list-item>
+          <mat-list-item class="parent">
+            <div
+              routerLink="/settings"
+              routerLinkActive="active"
+              class="mat-list-item"
+            >
+              <mat-icon mat-list-icon class="icon">settings</mat-icon>
+              <span class="full-width" *ngIf="isExpanded || isShowing"
+                >Settings</span
+              >
+            </div>
+          </mat-list-item>
+          <mat-list-item class="parent">
+            <div
+              routerLink="/settings"
+              routerLinkActive="active"
+              class="mat-list-item"
+            >
+              <mat-icon mat-list-icon class="icon">settings</mat-icon>
+              <span class="full-width" *ngIf="isExpanded || isShowing"
+                >Settings</span
+              >
+            </div>
+          </mat-list-item>
+          <mat-list-item class="parent">
+            <div
+              routerLink="/settings"
+              routerLinkActive="active"
+              class="mat-list-item"
+            >
+              <mat-icon mat-list-icon class="icon">settings</mat-icon>
+              <span class="full-width" *ngIf="isExpanded || isShowing"
+                >Settings</span
+              >
+            </div>
+          </mat-list-item>
+          <mat-list-item class="parent">
+            <div
+              routerLink="/settings"
+              routerLinkActive="active"
+              class="mat-list-item"
+            >
+              <mat-icon mat-list-icon class="icon">settings</mat-icon>
+              <span class="full-width" *ngIf="isExpanded || isShowing"
+                >Settings</span
+              >
+            </div>
+          </mat-list-item>
+          <mat-list-item class="parent">
+            <div
+              routerLink="/settings"
+              routerLinkActive="active"
+              class="mat-list-item"
+            >
+              <mat-icon mat-list-icon class="icon">settings</mat-icon>
+              <span class="full-width" *ngIf="isExpanded || isShowing"
+                >Settings</span
+              >
+            </div>
+          </mat-list-item>
+        </mat-nav-list>
+      </mat-sidenav>
+    
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-container>
+  </div>
+  <app-footer></app-footer>
+</div>
