@@ -1,0 +1,58 @@
+<mat-toolbar color="primary" class="">
+  <button mat-icon-button (click)="onMenuToggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <h1 class="example-app-name">Keep Notes</h1>
+  <span class="example-spacer"></span>
+  <!-- <mat-form-field>
+    <mat-label>Choose Theme</mat-label>
+    <mat-select [(ngModel)]="selectedTheme" (ngModelChange)="changeTheme()">
+      <mat-option value="theme-default">Default Theme</mat-option>
+      <mat-option value="theme-dark">Dark Theme</mat-option>
+    </mat-select>
+  </mat-form-field> -->
+  <!-- <button
+    #selectButton
+    class="select-button"
+    type="button"
+    mat-raised-button
+    color="primary"
+  >
+    toggle
+    <mat-icon>arrow_drop_down</mat-icon>
+    <mat-select (selectionChange)="onChange($event.value)">
+      <mat-option value="theme-default">Default Theme</mat-option>
+      <mat-option value="theme-dark">Dark Theme</mat-option>
+    </mat-select>
+  </button> -->
+  <!-- <button mat-button [matMenuTriggerFor]="themeMenu">
+    <mat-icon> format_color_fill</mat-icon>
+  </button>
+  
+  <mat-menu #themeMenu="matMenu">
+    <button mat-menu-item (click)="changeTheme('theme-deep-purple-amber')">Deep Purple & Amber</button>
+    <button mat-menu-item (click)="changeTheme('theme-indigo-pink')">Indigo & Pink</button>
+    <button mat-menu-item (click)="changeTheme('theme-pink-blue-grey')">Pink & Blue-grey</button>
+    <button mat-menu-item (click)="changeTheme('theme-purple-green')">Purple & Green</button>
+  </mat-menu> -->
+  <app-theme-switch-button 
+  [options]="options$ | async"
+  (themeChange)="themeChangeHandler($event)">
+</app-theme-switch-button>
+  
+  <!-- <button
+    mat-icon-button
+    class=""
+    matTooltip="Select a theme"
+    TooltipPosition="below"
+  >
+    <mat-icon> format_color_fill</mat-icon>
+    <mat-select [(ngModel)]="selectedTheme" (ngModelChange)="changeTheme()">
+      <mat-option value="theme-default">Default Theme</mat-option>
+      <mat-option value="theme-dark">Dark Theme</mat-option>
+    </mat-select>
+  </button> -->
+  <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    join 
+  </button> -->
+</mat-toolbar>

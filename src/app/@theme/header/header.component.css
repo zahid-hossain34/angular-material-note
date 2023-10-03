@@ -1,0 +1,29 @@
+.example-spacer {
+    flex: 1 1 auto;
+
+  }
+  .select-button .mat-select {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  
+  .select-button {
+    position: relative;
+  }
+  /* mat-toolbar {
+    display:flex;
+    position: fixed;
+   
+    
+} */
+.example-toolbar{
+    display:flex;
+    position: fixed;
+    justify-content: space-between;
+
+}
+  
