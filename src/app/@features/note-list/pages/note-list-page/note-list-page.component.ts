@@ -78,7 +78,7 @@ export class NoteListPageComponent implements OnInit {
   }
 
   onNoteClick(noteID: any) {
-    this.router.navigate(['/note-details', noteID]);
+    this.router.navigate([`/notes/details/${noteID}`]);
   }
 
   drop(event: CdkDragDrop<string[]>) {

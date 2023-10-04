@@ -1,0 +1,29 @@
+.note-input-container {
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    margin-bottom: 10px;
+  }
+  .note-input-container__box {
+    display: flex;
+    width: 600px;
+    flex-direction: column;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 0.375rem;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 0.75rem;
+    margin-top: 2.5rem;
+  }
+  .note-input-container__box__input {
+    padding: 0.75rem;
+    border: none;
+    color: black;
+    outline: none;
+    background-color: transparent;
+  }
+  .note-input-container__box__input:focus {
+    outline: none;
+  }

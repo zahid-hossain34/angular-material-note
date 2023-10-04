@@ -1,0 +1,24 @@
+  <div class="note-input-container">
+    <div
+     
+      class="note-input-container__box"
+    >
+      <input
+        [(ngModel)]="title"
+        (ngModelChange)="onTitleChange(title)"
+        class="note-input-container__box__input"
+        type="text"
+        matInput
+        placeholder="Title"
+      />
+      <ckeditor
+        [editor]="Editor"
+        [(ngModel)]="editorContent"
+        [config]="editorConfig"
+        (change)="onEditorChange($event)"
+      ></ckeditor>
+    </div>
+  
+  </div>
+
+
