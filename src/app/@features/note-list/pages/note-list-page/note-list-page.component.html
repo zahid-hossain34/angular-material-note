@@ -1,8 +1,8 @@
 <div class="note-container">
   <div class="note-input-container">
     <div
-      appClickAwayListener
-      (clickAway)="onClickAway()"
+    appClickAwayListener
+    (clickAway)="onClickAway()"
       class="note-input-container__box"
     >
       <input
@@ -22,6 +22,27 @@
       ></ckeditor>
     </div>
   </div>
+  <!-- <div class="note-list-container">
+    <mat-grid-list
+      cdkDropList
+      cdkDropListOrientation="horizontal"
+      cols="5"
+      rowHeight="1:1"
+      gutterSize="10px"
+      class="example-list"
+    >
+      <mat-grid-tile
+        class="example-box"
+        
+        
+        *ngFor="let note of notes"
+        
+        cdkDrag
+      >
+      <p>{{ note.noteTitle }}</p>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div> -->
 
   <div class="note-list-container">
     <mat-grid-list
@@ -34,21 +55,25 @@
       class="example-list"
     >
       <mat-grid-tile
-        class="example-card"
+        class="example-box"
         *ngFor="let note of notes$ | async"
         (click)="onNoteClick(note?.id)"
         cdkDrag
         [cdkDragData]="note"
       >
-        <div class="note-card">
-          <div class="card-action">
-            <button mat-icon-button (click)="onDelete(note.id)">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </div>
-          <h1>{{ note.noteTitle || "" }}</h1>
-          <p [innerHTML]="note.noteDescription">{{ note.noteDescription }}</p>
-        </div>
+        <mat-card class="note-card">
+          <mat-card-header>
+            <mat-card-title> {{ note.noteTitle || "" }} </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p [innerHTML]="note.noteDescription">{{ note.noteDescription }}</p>
+            <mat-divider></mat-divider>
+          </mat-card-content>
+          <mat-card-actions class="card-actions">
+            <button mat-button>LIKE</button>
+            <button mat-button>SHARE</button>
+          </mat-card-actions>
+        </mat-card>
       </mat-grid-tile>
     </mat-grid-list>
   </div>

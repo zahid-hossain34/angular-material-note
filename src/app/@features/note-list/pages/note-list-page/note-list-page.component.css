@@ -35,19 +35,29 @@
   margin-bottom: 20px;
   padding: 20px;
 }
-.example-card {
-  border: solid 1px #ccc;
-  color: rgba(255, 255, 255, 0.87);
+.example-list {
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.example-box {
+  width: 100%;
+  color: rgba(0, 0, 0, 0.87);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   cursor: move;
-  background: brown;
   font-size: 14px;
   border-radius: 4px;
   word-break: break-word;
+  border: 1px solid black;
+
 }
+
 
 .note-card {
   width: 100%;
@@ -56,6 +66,9 @@
   flex-direction: column;
   position: relative;
   padding: 0 5px;
+  margin-bottom: 5px ;
+  background-color: rgb(228, 228, 228);
+  overflow-y: auto;
 }
 .card-action {
   opacity: 0;

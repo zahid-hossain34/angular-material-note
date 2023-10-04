@@ -6,12 +6,13 @@ import { NoteListPageComponent } from './pages/note-list-page/note-list-page.com
 import { ClickAwayListenerDirective } from 'src/app/@application/directives/click-away-listener.directive';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import {DragDropModule,CdkDrag, CdkDropList, moveItemInArray} from '@angular/cdk/drag-drop';
+import { DragDropModule, CdkDrag, CdkDropList, CdkDragDrop } from '@angular/cdk/drag-drop';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { MatDivider, MatDividerModule } from '@angular/material/divider';
 import { NoteDetailsPageComponent } from './pages/note-details-page/note-details-page.component';
+import { MatButtonModule } from '@angular/material/button';
 
 const COMPONETS = [
   // pages
@@ -30,7 +31,10 @@ const COMPONETS = [
     MatGridListModule,
     MatCardModule,
     MatIconModule,
-    MatDividerModule
+    MatDividerModule,
+    MatButtonModule,
+    CdkDropList,
+    CdkDrag,
   ],
   declarations: [...COMPONETS,ClickAwayListenerDirective]
 })

@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { noteReducer } from './@application/store/note-state/note.reducer';
 import { metaReducers } from './@application/store/store';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [AppComponent],

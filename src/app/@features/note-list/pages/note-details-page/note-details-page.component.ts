@@ -24,6 +24,7 @@ export class NoteDetailsPageComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((res) => {
+      
       this.id = String(res.get('id'));
     });
     this.getNoteByIdAction();
