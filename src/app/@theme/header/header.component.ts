@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef ,AfterViewChecked} from '@angular/core';
 import { Location } from '@angular/common';
 
 import { ThemeService } from '../theme.service';
@@ -12,7 +12,7 @@ import * as NoteActions from 'src/app/@application/store/note-state/note.actions
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit,AfterViewChecked {
   id: string = '';
   noteTitle = '';
   isIdAvailable: boolean = false;
@@ -37,6 +37,7 @@ export class HeaderComponent implements OnInit {
   }
   ngAfterViewChecked(): void {
     this.getNoteId();
+    if(this.id !== '' && this.id !== undefined && this.id !== null){
     this.store.dispatch(NoteActions.getNoteById({ id: this.id }));
     this.store.select('note', 'selectedNote').subscribe((res) => {
       if (res) {
@@ -47,6 +48,7 @@ export class HeaderComponent implements OnInit {
       }
     });
 
+  }
     this.cdr.detectChanges();
   }
   onMenuToggle() {

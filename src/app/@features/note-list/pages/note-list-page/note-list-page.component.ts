@@ -27,6 +27,7 @@ export class NoteListPageComponent implements OnInit {
     private router: Router
   ) {
     this.notes$ = this.store.select('note', 'notes');
+    
   }
   ngOnInit() {}
 

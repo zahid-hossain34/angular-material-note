@@ -19,6 +19,7 @@
   margin-top: 2.5rem;
   border: 1px solid rgba(0, 0, 0, 0.338);
   background-color: rgb(240, 240, 240);
+  color: black;
 }
 .note-input-container__box__input {
   padding: 0.75rem;

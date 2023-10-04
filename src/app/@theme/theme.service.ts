@@ -8,9 +8,13 @@ import { ThemeManagerService } from './theme-manager.service';
   providedIn: 'root'
 })
 export class ThemeService {
-
+  selectedTheme = 'deeppurple-amber';
   private menuExpandedSubject = new BehaviorSubject<boolean>(true);
   menuExpanded$ = this.menuExpandedSubject.asObservable();
+   updatedTheme = new BehaviorSubject<string>(this.selectedTheme);
+  // updatedTheme$ = this.updatedTheme.asObservable();
+
+
 
 constructor(
   private http: HttpClient,
@@ -25,9 +29,14 @@ getThemeOptions(): Observable<Array<Option>> {
   return this.http.get<Array<Option>>("assets/options.json");
 }
 setTheme(themeToSet:string) {
+  this.updatedTheme.next(themeToSet);
+  this.updatedTheme.subscribe((res) => {
+    this.selectedTheme = res;
+  }
+  );
   this.themeStyleManager.setStyle(
     "theme",
-    `${themeToSet}.css`
+    `${this.selectedTheme}.css`
   );
 }
 

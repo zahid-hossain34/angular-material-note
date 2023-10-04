@@ -12,23 +12,17 @@ import { StoreModule } from '@ngrx/store';
 import { noteReducer } from './@application/store/note-state/note.reducer';
 import { metaReducers } from './@application/store/store';
 
-
-
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
-BrowserModule,
-  AppRoutingModule,
+    BrowserModule,
+    AppRoutingModule,
     ThemeModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    StoreModule.forRoot({ note: noteReducer },{metaReducers})
-
-
+    StoreModule.forRoot({ note: noteReducer }, { metaReducers }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -17,6 +17,7 @@ export class ThemeSwitchButtonComponent implements OnInit {
     
   }
   changeTheme(themeToSet:string) {
+    this.themeService.updatedTheme.next(themeToSet);
     this.themeService.setTheme(themeToSet);
   }
 
