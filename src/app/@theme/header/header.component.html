@@ -1,9 +1,24 @@
 <mat-toolbar color="primary" class="example-toolbar">
-  <button mat-icon-button (click)="onMenuToggle()">
+  <button *ngIf="isIdAvailable" mat-icon-button (click)="onBack()">
+    <mat-icon>keyboard_backspace</mat-icon>
+  </button>
+  <button *ngIf="!isIdAvailable" mat-icon-button (click)="onMenuToggle()">
     <mat-icon>menu</mat-icon>
   </button>
   <h1 class="example-app-name">Keep Notes</h1>
+  <div *ngIf="isIdAvailable" class="note-title">
+    <h1 class="">{{ noteTitle }}</h1>
+  </div>
   <span class="example-spacer"></span>
-  <app-theme-switch-button>
-</app-theme-switch-button>
+  <div class="actions">
+    <button
+      *ngIf="isIdAvailable"
+      mat-raised-button
+      color="warn"
+      (click)="onDeleteNote()"
+    >
+      Delete
+    </button>
+    <app-theme-switch-button></app-theme-switch-button>
+  </div>
 </mat-toolbar>

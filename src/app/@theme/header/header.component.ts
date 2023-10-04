@@ -1,25 +1,65 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from "rxjs";
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Location } from '@angular/common';
 
 import { ThemeService } from '../theme.service';
-import { Option } from 'src/app/@application/interfaces/theme-option.interface';
+import { ChildrenOutletContexts, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { NoteState } from 'src/app/@application/store/note-state/note.state';
+import * as NoteActions from 'src/app/@application/store/note-state/note.actions';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  
-  constructor(private themeService:ThemeService) { }
+  id: string = '';
+  noteTitle = '';
+  isIdAvailable: boolean = false;
+
+
+  constructor(
+    private themeService: ThemeService,
+    private contexts: ChildrenOutletContexts,
+    private locatin: Location,
+    private store: Store<{ note: NoteState }>,
+    private cdr: ChangeDetectorRef,
+    private route:Router
+  ) {}
 
   ngOnInit() {
+    
+  }
+  getNoteId() {
+    this.contexts.getContext('primary')?.route?.params.subscribe((res) => {
+      this.id = String(res['id']);
+    });
+  }
+  ngAfterViewChecked(): void {
+    this.getNoteId();
+    this.store.dispatch(NoteActions.getNoteById({ id: this.id }));
+    this.store.select('note', 'selectedNote').subscribe((res) => {
+      if (res) {
+        this.noteTitle = res.noteTitle;
+        this.isIdAvailable = res.id ? true : false;
+      } else {
+        this.isIdAvailable = false;
+      }
+    });
 
+    this.cdr.detectChanges();
   }
   onMenuToggle() {
     this.themeService.toggleMenu();
   }
- 
-  
+  onBack() {
+    this.locatin.back();
+  }
+  onDeleteNote(){
+    this.store.dispatch(NoteActions.deleteNote({
+      id:this.id
+    }));
+    this.route.navigate(['/notes']);
 
+  }
 }
