@@ -19,14 +19,14 @@ export class NoteListPageComponent {
   showTitle = false;
   title: string = '';
   editorContent: string = '';
-  notes$: Observable<INotes[]>;
+  // notes$: Observable<INotes[]>;
 
 
   constructor(
     private store: Store<{ note: NoteState }>,
     private router: Router
   ) {
-    this.notes$ = this.store.select('note', 'notes');
+    // this.notes$ = this.store.select('note', 'notes');
     
   }
   ngOnInit() {
@@ -88,7 +88,7 @@ export class NoteListPageComponent {
     console.log(event);
     const previousIndex = event.previousIndex;
     const currentIndex = event.currentIndex;
-    this.store.dispatch(NoteActions.dragNote({ previousIndex, currentIndex }));
+    // this.store.dispatch(NoteActions.dragNote({ previousIndex, currentIndex }));
   }
 }
 

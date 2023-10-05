@@ -13,12 +13,14 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { MatDivider, MatDividerModule } from '@angular/material/divider';
 import { NoteDetailsPageComponent } from './pages/note-details-page/note-details-page.component';
 import { MatButtonModule } from '@angular/material/button';
+import { NoteListComponent } from './components/note-list/note-list.component';
 
 const COMPONETS = [
   // pages
   NoteListPageComponent,
-  NoteDetailsPageComponent
+  NoteDetailsPageComponent,
   // components
+  NoteListComponent
 ]
 @NgModule({
   imports: [
