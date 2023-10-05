@@ -1,7 +1,6 @@
-
 <div class="container">
-  <div class=" recycle-bin">
-    <p class="">Empty recycle bin </p>
+  <div class="recycle-bin">
+    <p class="">Empty recycle bin</p>
     <p (click)="onEmptyRecycleBin()" class="empty-bin">Empty Bin</p>
   </div>
   <div class="note-list-container">
@@ -13,12 +12,18 @@
     >
       <mat-grid-tile
         *ngFor="let note of deletedNotes$ | async"
-        class="example-card"
+        class="example-box"
       >
-        <div class="note-card">
-          <h1>{{ note.noteTitle || "" }}</h1>
-          <p [innerHTML]="note.noteDescription">{{ note.noteDescription }}</p>
-        </div>
+        <mat-card class="note-card">
+          <mat-card-header>
+            <mat-card-title> {{ note.noteTitle || "" }} </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p [innerHTML]="note.noteDescription">
+              {{ note.noteDescription }}
+            </p>
+          </mat-card-content>
+        </mat-card>
       </mat-grid-tile>
     </mat-grid-list>
   </div>
