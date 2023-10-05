@@ -5,5 +5,6 @@ export interface NoteState {
     deletedNotes: INotes[],
     selectedNote: INotes | null,
     selectedNoteId: string,
+    theme: string,
   }
  

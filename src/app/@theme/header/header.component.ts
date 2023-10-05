@@ -21,7 +21,7 @@ import { Subscription, filter, map, tap } from 'rxjs';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   id: string = '';
-  noteTitle = '';
+  title = '';
   isIdAvailable: boolean = false;
   private storeSubscription!: Subscription;
 
@@ -61,18 +61,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
           .select('note', 'selectedNote')
           .subscribe((res) => {
             if (res) {
-              this.noteTitle = res.noteTitle;
+              this.title = res.title;
               this.isIdAvailable = true;
-            }else{
+            } else {
               this.isIdAvailable = false;
-    
             }
-    
           });
- 
       });
   }
-
 
   onMenuToggle() {
     this.themeService.toggleMenu();
@@ -89,8 +85,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.route.navigate(['/notes']);
   }
   ngOnDestroy(): void {
-    if (this.storeSubscription) {
-      this.storeSubscription.unsubscribe();
-    }
+      if (this.storeSubscription)  this.storeSubscription.unsubscribe();
   }
 }

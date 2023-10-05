@@ -23,7 +23,7 @@
     </div>
   </div>
   <div class="note-list-container">
-    <!-- <mat-grid-list
+    <mat-grid-list
       cdkDropList
       cdkDropListOrientation="horizontal"
       (cdkDropListDropped)="drop($event)"
@@ -42,11 +42,11 @@
         <mat-card class="note-card">
           <div class="note-card-content">
             <mat-card-header>
-              <mat-card-title> {{ note.noteTitle || "" }} </mat-card-title>
+              <mat-card-title> {{ note.title || "" }} </mat-card-title>
             </mat-card-header>
             <mat-card-content>
-              <p [innerHTML]="note.noteDescription">
-                {{ note.noteDescription }}
+              <p [innerHTML]="note.description">
+                {{ note.description }}
               </p>
             </mat-card-content>
           </div>
@@ -56,7 +56,7 @@
           </mat-card-actions>
         </mat-card>
       </mat-grid-tile>
-    </mat-grid-list> -->
-    <app-note-list></app-note-list>
+    </mat-grid-list>
+    <!-- <app-note-list></app-note-list> -->
   </div>
 </div>

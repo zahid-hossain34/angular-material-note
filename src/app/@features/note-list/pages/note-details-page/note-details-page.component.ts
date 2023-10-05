@@ -1,20 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { Store } from '@ngrx/store';
 import { NoteState } from 'src/app/@application/store/note-state/note.state';
 import * as NoteActions from 'src/app/@application/store/note-state/note.actions';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-note-details-page',
   templateUrl: './note-details-page.component.html',
   styleUrls: ['./note-details-page.component.css'],
 })
-export class NoteDetailsPageComponent implements OnInit {
+export class NoteDetailsPageComponent implements OnInit, OnDestroy {
   public Editor = ClassicEditor;
   id: string = '';
   editorContent = '';
   title: string = '';
+  SelectedNoteSubscription!:Subscription
 
   constructor(
     private store: Store<{ note: NoteState }>,
@@ -34,11 +36,11 @@ export class NoteDetailsPageComponent implements OnInit {
     this.store.dispatch(NoteActions.getNoteById({ id: this.id }));
   }
   selectedNoteDetaisl() {
-    this.store.select('note', 'selectedNote').subscribe((res) => {
+   this.SelectedNoteSubscription =  this.store.select('note', 'selectedNote').subscribe((res) => {
       if (res) {
         this.id = res.id as string;
-        this.title = res.noteTitle;
-        this.editorContent = res.noteDescription;
+        this.title = res.title;
+        this.editorContent = res.description;
       }
     });
   }
@@ -70,8 +72,8 @@ export class NoteDetailsPageComponent implements OnInit {
       NoteActions.updateNote({
         id: this.id,
         note: {
-          noteTitle: this.title,
-          noteDescription: this.editorContent,
+          title: this.title,
+          description: this.editorContent,
         },
       })
     );
@@ -82,8 +84,8 @@ export class NoteDetailsPageComponent implements OnInit {
       NoteActions.updateNote({
         id: this.id,
         note: {
-          noteTitle: this.title,
-          noteDescription: this.editorContent,
+          title: this.title,
+          description: this.editorContent,
         },
       })
     );
@@ -95,5 +97,8 @@ export class NoteDetailsPageComponent implements OnInit {
       })
     );
     this.route.navigate(['/notes']);
+  }
+  ngOnDestroy(): void {
+    if(this.SelectedNoteSubscription) this.SelectedNoteSubscription.unsubscribe();
   }
 }

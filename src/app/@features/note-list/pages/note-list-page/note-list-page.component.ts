@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import * as NoteActions from 'src/app/@application/store/note-state/note.actions';
 import { INotes } from 'src/app/@application/interfaces/note.interface';
 import { Observable } from 'rxjs';
@@ -14,23 +14,22 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
   templateUrl: './note-list-page.component.html',
   styleUrls: ['./note-list-page.component.css'],
 })
-export class NoteListPageComponent {
+export class NoteListPageComponent implements OnInit , OnDestroy {
   public Editor = ClassicEditor;
   showTitle = false;
   title: string = '';
   editorContent: string = '';
-  // notes$: Observable<INotes[]>;
-
+  notes$: Observable<INotes[]>;
 
   constructor(
     private store: Store<{ note: NoteState }>,
     private router: Router
   ) {
-    // this.notes$ = this.store.select('note', 'notes');
-    
+    this.notes$ = this.store.select('note', 'notes');
   }
   ngOnInit() {
-
+    console.log('listpage');
+    
   }
 
   onFoucusEditor() {
@@ -42,8 +41,8 @@ export class NoteListPageComponent {
       this.store.dispatch(
         NoteActions.addNewNote({
           id: Utils.generateUniqId(),
-          noteTitle: this.title,
-          noteDescription: this.editorContent,
+          title: this.title,
+          description: this.editorContent,
         })
       );
     }
@@ -83,12 +82,14 @@ export class NoteListPageComponent {
   onNoteClick(noteID: any) {
     this.router.navigate([`/notes/details/${noteID}`]);
   }
- 
+
   drop(event: CdkDragDrop<string[]>) {
     console.log(event);
     const previousIndex = event.previousIndex;
     const currentIndex = event.currentIndex;
     // this.store.dispatch(NoteActions.dragNote({ previousIndex, currentIndex }));
   }
+  ngOnDestroy(): void {
+      this.notes$.subscribe().unsubscribe();
+  }
 }
-

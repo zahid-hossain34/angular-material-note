@@ -1,9 +1,9 @@
 export interface INotes{
     id?:string
-    noteTitle: string,
-    noteDescription: string
+    title: string,
+    description: string
   }
 export interface IUpdateNote{
-    noteTitle: string,
-    noteDescription: string
+    title: string,
+    description: string
 } 

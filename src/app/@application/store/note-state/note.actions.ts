@@ -35,6 +35,10 @@ export const dragNote = createAction(
   '[Note] Drag Note',
   props<{ previousIndex: number, currentIndex: number }>()
 );
+export const updateTheme = createAction(
+  '[Note] Update Theme',
+  props<{ theme: string }>()
+);
 
 export const emptyRecycleBin = createAction('[Note] Empty Bin');
 

@@ -1,17 +1,16 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ThemeManagerService {
-
   constructor() {}
 
   /**
    * Set the stylesheet with the specified key.
    */
   setStyle(key: string, href: string) {
-    getLinkElementForKey(key).setAttribute("href", href);
+    getLinkElementForKey(key).setAttribute('href', href);
   }
 
   /**
@@ -36,14 +35,13 @@ function getExistingLinkElementByKey(key: string) {
 }
 
 function createLinkElementWithKey(key: string) {
-  const linkEl = document.createElement("link");
-  linkEl.setAttribute("rel", "stylesheet");
+  const linkEl = document.createElement('link');
+  linkEl.setAttribute('rel', 'stylesheet');
   linkEl.classList.add(getClassNameForKey(key));
-  document.head.appendChild(linkEl);  
+  document.head.appendChild(linkEl);
   return linkEl;
 }
 
 function getClassNameForKey(key: string) {
   return `app-${key}`;
-
 }

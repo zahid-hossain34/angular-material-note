@@ -7,6 +7,7 @@ const initialState: NoteState = {
   deletedNotes: [],
   selectedNote: null,
   selectedNoteId: '',
+  theme:"deeppurple-amber"
 };
 export const selectNoteState = (state:NoteState) => state.notes;
 
@@ -58,7 +59,9 @@ export const noteReducer = createReducer(
     const [draggedNote] = notes.splice(previousIndex, 1);
     notes.splice(currentIndex, 0, draggedNote);
     return { ...state, notes };
-  })
+  }),
+  on(NoteActions.updateTheme, (state, { theme }) => ({ ...state, theme }))
+  
 );
 
 export function reducer(state:NoteState, action:Action) {

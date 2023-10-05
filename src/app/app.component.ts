@@ -1,22 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ThemeService } from './@theme/theme.service';
+import { Store } from '@ngrx/store';
+import { NoteState } from './@application/store/note-state/note.state';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit,OnDestroy {
   title = 'angular-material-note';
   theme: string = '';
-  constructor(private themeService: ThemeService) {}
+  themeSubscription!:Subscription
+  constructor(
+    private themeService: ThemeService,
+    private store: Store<{ note: NoteState }>
+  ) {}
   ngOnInit(): void {
-    this.themeService.updatedTheme.subscribe((res) => {
-      this.theme = res;
+    this.themeSubscription = this.store.select('note', 'theme').subscribe((theme) => {
+      theme ? (this.theme = theme) : (this.theme = 'deeppurple-amber');
     });
     this.themeService.setTheme(this.theme);
-
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
+  }
+  ngOnDestroy(): void {
+    if(this.themeSubscription) this.themeSubscription.unsubscribe();
   }
 }
