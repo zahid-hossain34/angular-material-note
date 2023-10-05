@@ -33,7 +33,7 @@
 .note-list-container {
   margin-top: 20px;
   margin-bottom: 20px;
-  padding: 20px;
+  padding: 0 20px;
 }
 .example-list {
   max-width: 100%;

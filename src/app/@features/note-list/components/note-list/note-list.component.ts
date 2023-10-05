@@ -6,11 +6,13 @@ import { Observable, Subscribable, Subscription } from 'rxjs';
 import { INotes } from 'src/app/@application/interfaces/note.interface';
 import { NoteState } from 'src/app/@application/store/note-state/note.state';
 import * as NoteActions from 'src/app/@application/store/note-state/note.actions';
+import { fadeInUp400ms } from 'src/app/@application/animations/fade-in-up.animation';
 
 @Component({
   selector: 'app-note-list',
   templateUrl: './note-list.component.html',
-  styleUrls: ['./note-list.component.css']
+  styleUrls: ['./note-list.component.css'],
+
 })
 export class NoteListComponent  {
 

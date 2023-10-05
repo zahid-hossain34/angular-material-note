@@ -1,7 +1,12 @@
 <div class="example-container" cdkDropListGroup>
-  <div cdkDropList  (cdkDropListDropped)="dropListDropped($event)"></div>
-  <div cdkDropList *ngFor="let item of items"
-       [cdkDropListEnterPredicate]="dropListEnterPredicate" (cdkDropListDropped)="dropListDropped($event)">
-    <div cdkDrag class="example-box" >{{item}}</div>
+  <div cdkDropList (cdkDropListDropped)="dropListDropped($event)"></div>
+  <div
+    cdkDropList
+    *ngFor="let item of items"
+    @fadeInUp
+    [cdkDropListEnterPredicate]="dropListEnterPredicate"
+    (cdkDropListDropped)="dropListDropped($event)"
+  >
+    <div cdkDrag class="example-box">{{ item }}</div>
   </div>
-</div> 
+</div>

@@ -14,6 +14,7 @@ import { MatDivider, MatDividerModule } from '@angular/material/divider';
 import { NoteDetailsPageComponent } from './pages/note-details-page/note-details-page.component';
 import { MatButtonModule } from '@angular/material/button';
 import { NoteListComponent } from './components/note-list/note-list.component';
+import { SharedModule } from 'src/app/@shared/shared.module';
 
 const COMPONETS = [
   // pages
@@ -24,9 +25,10 @@ const COMPONETS = [
 ]
 @NgModule({
   imports: [
-    CommonModule,
+  CommonModule,
     FormsModule,
     NotesListRoutes,
+    SharedModule,
     CKEditorModule,
     MatInputModule,
     DragDropModule,
